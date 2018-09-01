@@ -1,0 +1,27 @@
+.navbar {
+    margin-bottom: 30px;
+}
+.sidebar {
+    background-color: #e6e6e6;
+    border-radius: 3px;
+    padding: 20px;
+}
+.sidebar .sidebar-title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.page-title {
+    margin-bottom: 30px;
+}
+.post-image {
+    margin-bottom: 15px;
+}
+.image-block {
+    margin-bottom: 15px;
+}
+.post-item a {
+    width: 32%;
+}
+.edit-title {
+    margin: 40px 0 20px;
+}
