@@ -15,9 +15,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $posts = $this->galleryService->all();
-
-        return view('home')->with('posts', $posts);
+        return view('home');
     }
 
     public function about()

@@ -1,12 +1,11 @@
 @extends('layouts.master')
+@section('sidebar')
+    @include('chunks.sidebar')
+@endsection
 @section('content')
-    <h2 class="page-title" align="center">Create post</h2>
-    <div class="row">
-        <div class="col-md-4 sidebar">
-            <h2 class="sidebar-title">Last posts</h2>
-            <hr>
-        </div>
+    <div class="col-md-8 offset-1 content">
         <div class="col-md-7 offset-1">
+            <h2 class="page-title" align="center">Create post</h2>
             <form action="/gallery/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

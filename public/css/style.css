@@ -1,27 +1,48 @@
-.navbar {
-    margin-bottom: 30px;
+.content {
+    padding: 30px 0;
 }
+
 .sidebar {
-    background-color: #e6e6e6;
-    border-radius: 3px;
-    padding: 20px;
-}
-.sidebar .sidebar-title {
-    margin-bottom: 30px;
+    border: 1px solid #e6e6e6;
+    border-top: 0;
+    border-bottom: 0;
+    padding: 30px 0;
     text-align: center;
+    min-height: 100vh;
 }
+.sidebar hr {
+    margin: 8px 0;
+}
+.sidebar__title {
+    margin-bottom: 30px;
+}
+.sidebar__link {
+    display: block;
+}
+
 .page-title {
     margin-bottom: 30px;
 }
-.post-image {
-    margin-bottom: 15px;
-}
-.image-block {
-    margin-bottom: 15px;
-}
-.post-item a {
-    width: 32%;
-}
 .edit-title {
     margin: 40px 0 20px;
+}
+
+.all-posts .post-item {
+    margin-bottom: 100px;
+    height: 450px;
+}
+.all-posts .post-item__image {
+    margin-bottom: 30px;
+}
+.all-posts .post-item__image-block {
+    margin-bottom: 15px;
+    height: 220px;
+}
+.all-posts .post-item__text {
+    margin-bottom: 30px;
+    height: 50px;
+}
+.all-posts .post-item__buttons a {
+    width: 100%;
+    margin-bottom: 2px;
 }

@@ -1,20 +1,19 @@
 @extends('layouts.master')
+@section('sidebar')
+    @include('chunks.sidebar')
+@endsection
 @section('content')
-    <h2 class="page-title" align="center">Edit post #{{ $post->id }}</h2>
-    <div class="row">
-        <div class="col-md-4 sidebar">
-            <h2 class="sidebar-title">Last posts</h2>
-            <hr>
-        </div>
-        <div class="col-md-7 offset-1">
-            <h4>{{ $post->title }}</h4>
-            <div class="image-block">
-                <img src="/{{ $post->image }}" class="img-thumbnail" width="100%" alt="{{ $post->title }}">
+        <div class="col-md-8 offset-1 content">
+            <div class="post-item">
+                <h2 class="page-title" align="center">Edit {{ $post->title }}</h2>
+                <div class="post-item__image-block">
+                    <img src="/{{ $post->image }}" class="img-thumbnail" width="100%" alt="{{ $post->title }}">
+                </div>
+                <p>
+                    {{ $post->body }}
+                </p>
+                <hr>
             </div>
-            <p>
-                {{ $post->body }}
-            </p>
-            <hr>
             <div class="edit-title" align="center">Edit the data:</div>
             <form action="/gallery/update/{{ $post->id }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -31,6 +30,5 @@
                     <input type="submit" class="btn btn-primary" value="Update">
                 </div>
             </form>
-        </p>
-    </div>
+        </div>
 @endsection

@@ -13,7 +13,12 @@
 <body>
     @include('chunks.navbar')
     <div class="container">
-        @yield('content')
+        <div class="main">
+            <div class="row">
+                @yield('sidebar')
+                @yield('content')
+            </div>
+        </div>
     </div>
 </body>
 </html>

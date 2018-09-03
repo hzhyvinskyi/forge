@@ -1,11 +1,8 @@
-@foreach($posts as $post)
-    <div class="post-item">
-        <h3>
-            <a href="/gallery/show/{{ $post->id }}">{{ $post->title }}</a>
-        </h3>
-        <p>
-            {{ $post->body }}
-        </p>
-    </div>
+<div class="col-md-3 sidebar">
+    <h2 class="sidebar__title">Sidebar</h2>
     <hr>
-@endforeach
+    <a href="#" class="sidebar__link">Category</a>
+    <a href="#" class="sidebar__link">Category</a>
+    <a href="#" class="sidebar__link">Category</a>
+    <a href="#" class="sidebar__link">Documentation</a>
+</div>
