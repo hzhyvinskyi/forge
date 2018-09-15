@@ -49,5 +49,8 @@
                 </div>
             @endforeach
         </div>
+        <div class="pagination-navbar">
+            {{ $posts->links() }}
+        </div>
     </div>
 @endsection

@@ -12,7 +12,7 @@ class GalleryService
      */
     public function all()
     {
-        $posts = DB::table('posts')->select()->get();
+        $posts = DB::table('posts')->paginate(4);
         return $posts;
     }
 
