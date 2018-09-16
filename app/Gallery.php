@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Services;
+namespace App;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class GalleryService
+class Gallery
 {
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function all()
+    public function getAll()
     {
         $posts = DB::table('posts')->paginate(4);
         return $posts;
@@ -56,7 +56,7 @@ class GalleryService
     /**
      * @param $id
      */
-    public function destroy($id)
+    public function remove($id)
     {
         $oldRecord = $this->one($id);
         Storage::delete($oldRecord->image);

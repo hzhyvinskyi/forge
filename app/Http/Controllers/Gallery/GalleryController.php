@@ -1,24 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Gallery;
 
+use App\Http\Controllers\Controller;
+use App\Gallery;
+use App\Http\Requests\CreatePost;
 use Illuminate\Http\Request;
-use App\Http\Services\GalleryService;
 
 class GalleryController extends Controller
 {
     /**
-     * @var GalleryService
+     * @var Gallery
      */
-    private $galleryService;
+    private $gallery;
 
     /**
      * GalleryController constructor.
-     * @param GalleryService $galleryService
+     * @param Gallery $gallery
      */
-    public function __construct(GalleryService $galleryService)
+    public function __construct(Gallery $gallery)
     {
-        $this->galleryService = $galleryService;
+        $this->gallery = $gallery;
     }
 
     /**
@@ -26,7 +28,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $posts = $this->galleryService->all();
+        $posts = $this->gallery->getAll();
         return view('gallery.index', compact('posts'));
     }
 
@@ -36,7 +38,7 @@ class GalleryController extends Controller
      */
     public function show($id)
     {
-        $post = $this->galleryService->one($id);
+        $post = $this->gallery->one($id);
         return view('gallery.show', compact('post'));
     }
 
@@ -52,13 +54,13 @@ class GalleryController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(CreatePost $request)
     {
         $title = $request->input('title');
         $image = $request->file('image');
         $body = $request->input('body');
 
-        $this->galleryService->add($title, $image, $body);
+        $this->gallery->add($title, $image, $body);
 
         return redirect('/');
     }
@@ -69,7 +71,7 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        $post = $this->galleryService->one($id);
+        $post = $this->gallery->one($id);
         return view('gallery.edit', compact('post'));
     }
 
@@ -78,13 +80,13 @@ class GalleryController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(CreatePost $request, $id)
     {
         $title = $request->title;
         $image = $request->image;
         $body = $request->body;
 
-        $this->galleryService->update($id, $title, $image, $body);
+        $this->gallery->update($id, $title, $image, $body);
 
         return redirect('/');
     }
@@ -95,7 +97,7 @@ class GalleryController extends Controller
      */
     public function delete($id)
     {
-        $this->galleryService->destroy($id);
+        $this->gallery->remove($id);
         return redirect('/');
     }
 }
