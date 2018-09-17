@@ -21,6 +21,7 @@ class GalleryController extends Controller
     public function __construct(Gallery $gallery)
     {
         $this->gallery = $gallery;
+        $this->middleware('access')->only('index');
     }
 
     /**

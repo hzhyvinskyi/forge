@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('about', 'HomeController@about')->name('about');
+Route::get('testing', 'HomeController@testing')->name('testing');
 
 Route::namespace('Gallery')->prefix('gallery')->group(function () {
     Route::get('/', 'GalleryController@index')->name('gallery.index');
@@ -27,4 +27,20 @@ Route::namespace('Gallery')->prefix('gallery')->group(function () {
 Route::prefix('form')->group(function () {
     Route::get('/', 'HomeController@showForm')->name('form');
     Route::post('test-form', 'HomeController@testingForm')->name('form.test-validation');
+});
+
+//Route::middleware('guest')->group(function () {
+//    Route::get('text', function () {
+//        return 'text';
+//    });
+//});
+//
+Route::get('login', function () {
+    return 'login';
+})->name('login');
+
+Route::get('collection-testing', 'CollectionController@run')->name('collection-testing');
+
+Route::get('factory', function () {
+    return factory(App\Gallery::class, 5)->create();
 });

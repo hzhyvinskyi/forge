@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Gallery;
-use App\Http\Requests\CreatePost;
 use Illuminate\Http\Request;
 
 /**
@@ -37,8 +36,24 @@ class HomeController extends Controller
     /**
      * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|mixed
      */
-    public function about()
+    public function testing()
     {
+        $array = [
+            'kwweam4211', 'lawerk', 'awktkj3', '', 'kjuawlfsdgkk'
+        ];
+
+        $collection = collect($array)->map(function ($element) {
+            return strtoupper($element);
+        })
+        ->reject(function ($element) {
+            return empty($element);
+        });
+
+        $collection2 = $collection->reject(function ($element) {
+            return (strlen($element)) > 8;
+        })->map(function ($element) { return strtolower($element); });
+        dd($collection2);
+
         $posts = [
             'post1' => [
                 'title' => 'askg'
@@ -47,7 +62,7 @@ class HomeController extends Controller
                 'title' => 'AAA'
             ]
         ];
-        return view('about', compact('posts'));
+        return view('about', compact('posts', 'collection'));
     }
 
     /**

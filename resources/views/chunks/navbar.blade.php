@@ -10,8 +10,8 @@
             <li class="nav-item @if($_SERVER['REQUEST_URI'] == '/gallery/create')active @endif">
                 <a class="nav-link" href="/gallery/create">Add an image</a>
             </li>
-            <li class="nav-item @if($_SERVER['REQUEST_URI'] == '/about')active @endif">
-                <a class="nav-link" href="/about">About</a>
+            <li class="nav-item @if($_SERVER['REQUEST_URI'] == '/testing')active @endif">
+                <a class="nav-link" href="/testing">Testing</a>
             </li>
         </ul>
     </div>

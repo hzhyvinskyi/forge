@@ -12,5 +12,8 @@
         @empty
             nothing
         @endforelse
+        @foreach($collection as $item)
+            {{ $item }}
+        @endforeach
     </div>
 @endsection

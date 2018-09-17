@@ -29,6 +29,9 @@
 }
 .sidebar__link {
     display: block;
+    margin: 5px 10px;
+    font-weight: 700;
+    font-size: 18px;
 }
 
 .page-title {
