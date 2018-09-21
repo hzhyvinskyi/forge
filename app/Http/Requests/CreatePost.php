@@ -26,7 +26,8 @@ class CreatePost extends FormRequest
         return [
             'title' => 'bail|required|min:3|max:255',
             'image' => 'bail|required|image',
-            'body' => 'required'
+            'text' => 'required',
+            'category' => 'required'
         ];
     }
 

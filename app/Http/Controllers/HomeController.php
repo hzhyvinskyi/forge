@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Gallery;
+use App\Post;
 use Illuminate\Http\Request;
 
 /**
@@ -12,17 +12,17 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * @var Gallery
+     * @var Post
      */
-    private $gallery;
+    private $post;
 
     /**
      * HomeController constructor.
-     * @param Gallery $gallery
+     * @param Post $post
      */
-    public function __construct(Gallery $gallery)
+    public function __construct(Post $post)
     {
-        $this->gallery = $gallery;
+        $this->post = $post;
     }
 
     /**

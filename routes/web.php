@@ -14,14 +14,14 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('testing', 'HomeController@testing')->name('testing');
 
-Route::namespace('Gallery')->prefix('gallery')->group(function () {
-    Route::get('/', 'GalleryController@index')->name('gallery.index');
-    Route::get('show/{id}', 'GalleryController@show')->name('gallery.show');
-    Route::get('create', 'GalleryController@create')->name('gallery.create');
-    Route::post('store', 'GalleryController@store')->name('gallery.store');
-    Route::get('edit/{id}', 'GalleryController@edit')->name('gallery.edit');
-    Route::post('update/{id}', 'GalleryController@update')->name('gallery.update');
-    Route::get('delete/{id}', 'GalleryController@delete')->name('gallery.delete');
+Route::prefix('post')->group(function () {
+    Route::get('/', 'PostsController@index')->name('post.index');
+    Route::get('show/{id}', 'PostsController@show')->name('post.show');
+    Route::get('create', 'PostsController@create')->name('post.create');
+    Route::post('store', 'PostsController@store')->name('post.store');
+    Route::get('edit/{id}', 'PostsController@edit')->name('post.edit');
+    Route::post('update/{id}', 'PostsController@update')->name('post.update');
+    Route::get('delete/{id}', 'PostsController@delete')->name('post.delete');
 });
 
 Route::prefix('form')->group(function () {
@@ -42,5 +42,5 @@ Route::get('login', function () {
 Route::get('collection-testing', 'CollectionController@run')->name('collection-testing');
 
 Route::get('factory', function () {
-    return factory(App\Gallery::class, 5)->create();
+    return factory(App\Post::class, 5)->create();
 });

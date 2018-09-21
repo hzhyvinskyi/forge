@@ -61,6 +61,7 @@
 .all-posts .post-item__text {
     margin-bottom: 30px;
     height: 50px;
+    text-align: center;
 }
 .all-posts .post-item__buttons a {
     width: 100%;
