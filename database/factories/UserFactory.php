@@ -22,12 +22,24 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
-//$factory->define(App\Posts::class, function (Faker $faker) {
-//    return [
-//        'title' => $faker->name,
-//        'image' => $faker->name,
-//        'text' => $faker->text,
-//        'created_at' => $faker->date(),
-//        'updated_at' => $faker->date()
-//    ];
-//});
+$factory->define(App\Category::class, function (Faker $faker) {
+    return [
+        'name' => $faker->unique()->country,
+        'slug' => $faker->slug,
+        'created_at' => $faker->date(),
+        'updated_at' => $faker->date()
+    ];
+});
+
+$factory->define(App\Post::class, function (Faker $faker) {
+    return [
+        'category_id' => $faker->numberBetween(1, count(\App\Category::all())),
+        'title' => $name = $faker->name,
+        'slug' => str_slug($name),
+        'image' => '/' . $faker->image('uploads'),
+        'intro' => substr($text = $faker->text, 0, 45),
+        'text' => $text,
+        'created_at' => $faker->date(),
+        'updated_at' => $faker->date()
+    ];
+});

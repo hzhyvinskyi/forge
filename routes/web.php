@@ -12,10 +12,11 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('documentation', 'HomeController@documentation')->name('documentation');
 Route::get('testing', 'HomeController@testing')->name('testing');
 
 Route::prefix('post')->group(function () {
-    Route::get('/', 'PostsController@index')->name('post.index');
+    Route::get('/categories/{id?}', 'PostsController@index')->name('post.index');
     Route::get('show/{id}', 'PostsController@show')->name('post.show');
     Route::get('create', 'PostsController@create')->name('post.create');
     Route::post('store', 'PostsController@store')->name('post.store');
@@ -34,13 +35,18 @@ Route::prefix('form')->group(function () {
 //        return 'text';
 //    });
 //});
-//
+
 Route::get('login', function () {
     return 'login';
 })->name('login');
 
 Route::get('collection-testing', 'CollectionController@run')->name('collection-testing');
 
-Route::get('factory', function () {
-    return factory(App\Post::class, 5)->create();
+Route::prefix('factory')->group(function () {
+    Route::get('category', function () {
+        return factory(App\Category::class, 10)->create();
+    });
+    Route::get('post', function () {
+        return factory(App\Post::class, 100)->create();
+    });
 });

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('sidebar')
-    @include('chunks.sidebar')
+    @include('chunks.sidebar', $categories)
 @endsection
 @section('content')
     <div class="col-md-8 offset-1 content">
@@ -43,7 +43,7 @@
                             <tr>
                                 <td>
                                     <p class="post-item__text">
-                                        {{ $post->category()->first()->name }}
+                                        {{ $post->category->name }}
                                     </p>
                                 </td>
                             </tr>

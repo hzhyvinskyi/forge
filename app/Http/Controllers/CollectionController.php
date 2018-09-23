@@ -4,8 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+/**
+ * Class CollectionController
+ * @package App\Http\Controllers
+ */
 class CollectionController extends Controller
 {
+    /**
+     * @var array
+     */
     private $posts = [
         'post' => [
             'title' => 'Test title',
@@ -33,12 +40,18 @@ class CollectionController extends Controller
         ]
     ];
 
+    /**
+     * @var array
+     */
     private $array = [
         'name' => 'EXT',
         'age' => 24,
         'status' => 'zxc'
     ];
 
+    /**
+     * CollectionController constructor.
+     */
     public function __construct()
     {
         $posts = $this->posts;
@@ -47,12 +60,18 @@ class CollectionController extends Controller
         $this->map($posts);
     }
 
+    /**
+     *
+     */
     public function run()
     {
         $collection = collect($this->posts);
 //        $this->all($collection);
     }
 
+    /**
+     * @param $collection
+     */
     public function all($collection)
     {
         $collection = $collection->all();

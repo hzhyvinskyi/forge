@@ -7,7 +7,7 @@
             <div class="post-item">
                 <h2 class="page-title" align="center">Edit {{ $post->title }}</h2>
                 <div class="post-item__image-block">
-                    <img src="/{{ $post->image }}" class="img-thumbnail" width="100%" alt="{{ $post->title }}">
+                    <img src="{{ $post->image }}" class="img-thumbnail" width="100%" alt="{{ $post->title }}">
                 </div>
                 <p>
                     {{ $post->text }}
@@ -30,12 +30,12 @@
                     <small class="error-message">{{ $errors->first('text') ?? '' }}</small>
                 </div>
                 <div class="form-group">
-                    <label>
-                        <input type="radio" name="category" class="form-control" value="1">{{ $post->category->find(1)->name }}
-                    </label>
-                    <label>
-                        <input type="radio" name="category" class="form-control" value="2">{{ $post->category->find(2)->name }}
-                    </label>
+                    @foreach($categories as $category)
+                        <label class="radiobutton">
+                            <input type="radio" name="category" class="radiobutton" value="{{ $category->id }}" @if($post->category_id == $category->id) checked @endif> {{ $category->name }}
+                        </label>
+                        <br>
+                    @endforeach
                     <small class="error-message">{{ $errors->first('category') ?? null }}</small>
                 </div>
                 <div class="form-group">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -17,12 +18,19 @@ class HomeController extends Controller
     private $post;
 
     /**
+     * @var Category[]|\Illuminate\Database\Eloquent\Collection
+     */
+    private $categories;
+
+    /**
      * HomeController constructor.
      * @param Post $post
+     * @param Category $categories
      */
-    public function __construct(Post $post)
+    public function __construct(Post $post, Category $categories)
     {
         $this->post = $post;
+        $this->categories = $categories::all();
     }
 
     /**
@@ -30,7 +38,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', [
+            'categories' => $this->categories
+        ]);
+    }
+
+    /**
+     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|mixed
+     */
+    public function documentation()
+    {
+        return view('documentation');
     }
 
     /**
@@ -73,6 +91,10 @@ class HomeController extends Controller
         return view('form');
     }
 
+    /**
+     * @param Request $request
+     * @return string
+     */
     public function testingForm(Request $request)
     {
         $this->validate($request, [

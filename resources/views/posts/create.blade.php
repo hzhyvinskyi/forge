@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('sidebar')
-    @include('chunks.sidebar')
+    @include('chunks.sidebar', $categories)
 @endsection
 @section('content')
     <div class="col-md-8 offset-1 content">
@@ -21,12 +21,12 @@
                     <small class="error-message">{{ $errors->first('text') ?? null }}</small>
                 </div>
                 <div class="form-group">
-                    {{ dd($posts) }}
-                    {{--@foreach($posts->category as $category)--}}
-                        {{--<label>--}}
-                            {{--<input type="radio" name="category" class="form-control" value="{{ $category->id }}">{{ $category->name }}--}}
-                        {{--</label>--}}
-                    {{--@endforeach--}}
+                    @foreach($categories as $category)
+                        <label class="radiobutton">
+                            <input class="radiobutton" type="radio" name="category" value="{{ $category->id }}"> {{ $category->name }}
+                        </label>
+                        <br>
+                    @endforeach
                     <small class="error-message">{{ $errors->first('category') ?? null }}</small>
                 </div>
                 <div class="form-group">

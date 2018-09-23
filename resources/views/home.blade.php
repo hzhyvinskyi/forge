@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('sidebar')
-    @include('chunks.sidebar')
+    @include('chunks.sidebar', $categories)
 @endsection
 @section('content')
     <div class="col-md-8 offset-1 content">
