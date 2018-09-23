@@ -99,7 +99,7 @@ class PostsController extends Controller
         $post->text = $postData['text'];
         $post->save();
 
-        return redirect('/');
+        return redirect('/post/categories');
     }
 
     /**
@@ -130,7 +130,7 @@ class PostsController extends Controller
         ];
 
         $post = $this->post::find($id);
-        $this->deleteFile($post->image);
+        Storage::delete($post->image);
 
         $post->category_id = $data['category_id'];
         $post->title = $data['title'];
@@ -140,7 +140,7 @@ class PostsController extends Controller
         $post->text = $data['text'];
         $post->save();
 
-        return redirect('/');
+        return redirect("/post/show/{$post->id}");
     }
 
     /**
@@ -154,7 +154,7 @@ class PostsController extends Controller
             Storage::delete($post->image);
         }
 
-        return redirect('/');
+        return redirect('/post/categories');
     }
 
     /**
@@ -164,14 +164,6 @@ class PostsController extends Controller
     private function getSavedFilename(UploadedFile $file)
     {
         return $file->store('uploads/' . strtolower(str_random(2)) . '/' . strtolower(str_random(2)));
-    }
-
-    /**
-     * @param $file
-     */
-    private function deleteFile($file)
-    {
-        Storage::delete($file);
     }
 
     /**

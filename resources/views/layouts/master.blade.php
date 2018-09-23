@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    @include('chunks.navbar')
+    <header>
+        @include('chunks.navbar')
+    </header>
     <div class="container">
         <div class="main">
             <div class="row">
@@ -20,5 +22,8 @@
             </div>
         </div>
     </div>
+    <footer>
+        @include('chunks.footer')
+    </footer>
 </body>
 </html>
