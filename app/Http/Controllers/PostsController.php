@@ -95,7 +95,7 @@ class PostsController extends Controller
         $post->title = $postData['title'];
         $post->slug = str_slug($postData['title']);
         $post->image = '/' . $this->getSavedFilename($postData['image']);
-        $post->intro = substr($postData['text'], 0, 45);
+        $post->intro = str_limit($postData['text'], 45);
         $post->text = $postData['text'];
         $post->save();
 
