@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+//        \App\Post::find(1)->update([
+//            'title' => 'Dr. Sven Predovic II',
+//            'slug' => str_slug('Dr. Sven Predovic II')
+//        ]);
         // $this->call(UsersTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
     }
 }
