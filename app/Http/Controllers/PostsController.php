@@ -31,10 +31,10 @@ class PostsController extends Controller
      * @param Post $post
      * @param Category $category
      */
-    public function __construct(Post $post, Category $category)
+    public function __construct()
     {
-        $this->post = $post;
-        $this->category = $category;
+        $this->post = new Post();
+        $this->category = new Category();
         $this->middleware('access')->only('index');
     }
 
